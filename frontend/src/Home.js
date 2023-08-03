@@ -1,8 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [number, setNumber] = useState(0);
+  const navigate = useNavigate();
+
+  const navigateToFibListPage = (fibList) => {
+    // sends the queried/newly created data and sends it to this component to display
+    navigate("/sequence", { state: { fibList: fibList } });
+  };
 
   const handleSubmit = async (num) => {
     const json = JSON.stringify({ number: num });
@@ -15,7 +22,7 @@ const Home = () => {
         },
       }
     );
-    console.log(response.data)
+    navigateToFibListPage(response.data);
   };
 
   return (

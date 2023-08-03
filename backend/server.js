@@ -9,6 +9,9 @@ pool.connect();
 
 app.use(express.json());
 
+/*
+    Could implement a cache here to store queries to boost performance.
+*/
 const getSum = (num1, num2) => {
   let [x, y] = [num1.length - 1, num2.length - 1];
   let carryover = 0;
